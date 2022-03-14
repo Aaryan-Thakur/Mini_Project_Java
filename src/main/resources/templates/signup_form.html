@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Registeration</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500&display=swap" rel="stylesheet">
+	<style>
+
+		.mid{
+			display: block;
+            margin:20px auto;
+            text-align: center;
+			background-color: black;
+			text-align: center;
+		}
+
+		nav div {
+			display: inline-block;
+		}
+
+		nav div a {
+			padding: 5px 50px;
+		    border-radius: 19px;
+		}
+
+		a{
+			text-decoration: none;
+			color: white;
+			font-family: 'Baloo Bhaijaan 2', cursive;
+			font-size: 25px;
+			padding: 25px;
+		}
+		nav div a:hover{
+            color: red;
+        }
+		#recent{
+            color:gray;
+
+        }
+		
+		form{
+			width:360px;
+			margin: 71px auto;
+			text-align: center;
+			background:rgba(0,0,0,0.3);
+		}
+
+		form div{
+			margin:5px;
+			padding: 5px;
+		}
+
+		form div label{
+			font-family: 'Pacifico', cursive;
+		}
+
+		form div input{
+			display: block;
+            border:2px solid grey;
+            border-radius: 19px;
+            padding:5px;
+            margin:-6px auto;
+            width: 300px;
+            text-align: center;
+			font-family: 'Baloo Bhaijaan 2', cursive;
+            font-size: 15px;
+		}
+		form div button{
+            display: block;
+            padding: 5px;
+            margin: -3px auto;
+            width:320px;
+            border:4px solid white;
+            background-color: black;
+			font-family: 'Baloo Bhaijaan 2', cursive;
+            border-radius: 19px;
+            color: white;
+            cursor: pointer;
+        }
+	</style>
+</head>
+
+<body>
+	<div class="container text-center">
+		<form th:action="@{/process_register}" method="post" th:object="${user}" <div class="m-3">
+
+			<div class="form-group row">
+				<label class="col-4 col-form-label">First Name: </label>
+				<div class="col-6">
+					<input type="text" class="form-control" th:field="*{firstname}" required minlength="2"
+						maxlength="20" />
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label class="col-4 col-form-label">Last Name: </label>
+				<div class="col-6">
+					<input type="text" class="form-control" th:field="*{lastname}" required minlength="2"
+						maxlength="20" />
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label class="col-form-label col-4">E-mail</label>
+				<div class="col-6">
+					<input type="email" th:field="*{email}" class="form-control" required />
+				</div>
+			</div>
+
+
+			<div class="form-group row">
+				<label class="col-4 col-form-label">Password: </label>
+				<div class="col-6">
+					<input type="password" th:field="*{password}" class="form-control" required minlength="6"
+						maxlength="10" />
+				</div>
+			</div>
+
+			<div>
+				                <button type="submit" class="btn btn-primary">Sign Up</button>
+				            </div>
+	</div>
+	</form>
+	</div>
+
+</body>
+
+</html>

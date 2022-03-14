@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Homepage</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500&display=swap" rel="stylesheet">
+    <style>
+        div h1{
+            width:400px;
+            margin:20px auto;
+            text-align: center;
+            font-family: 'Baloo Bhaijaan 2', cursive;
+        }
+        .container{
+            width:400px;
+            margin:100px auto;
+            padding: 10px;
+            text-align: center;
+        }
+        .container div{
+            padding: 2px;
+            margin:10px;
+            background-color: black;
+            font-family: 'Baloo Bhaijaan 2', cursive;
+            color: antiquewhite;
+            border-radius: 10px;
+        }
+
+        .container div :hover{
+            color: red;
+            cursor: pointer;
+        }
+
+        
+
+    </style>
+</head>
+<body>
+<div class="container text-center">
+<div><h1> Welcome to the website</h1></div>
+
+<div sec:authorize="isAnonymous()"><h2><a th:href="@{/register}">Register</a></h3></div >
+<div sec:authorize="isAnonymous()"><h2><a th:href="@{/login}">Login</a></h3></div >
+
+<div sec:authorize="isAuthenticated()" ><h2><a th:href="@{/main}">Main Site</a></h3></div >
+
+</div>
+</body>
+</html>

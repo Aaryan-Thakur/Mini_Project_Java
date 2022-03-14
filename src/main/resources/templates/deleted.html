@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Homepage</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500&display=swap" rel="stylesheet">
+    <style>
+        .container{
+            background:rgba(0,0,0,0.3);
+            width: 400px;
+            margin: 150px auto;
+            text-align: center;
+            font-family: 'Baloo Bhaijaan 2', cursive;
+        }
+
+        .container div h2{
+            background-color:black;
+            color:white;
+            padding: 5px;
+
+        }
+
+        .container div h2:hover{
+            color: red;
+            cursor: pointer;
+        }
+        
+
+        
+    </style>
+</head>
+<body>
+<div class="container text-center">
+<div><h1> Post Deleted Successfully </h1></div>
+<div><h2><a th:href="@{/main}">Main Site</a></h3></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org"
+		xmlns:sec="http://www.thymeLeaf.org/thymeLeaf-extras-springsecurity5"
+		>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Registeration</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500&display=swap" rel="stylesheet">
+	<style>
+		h1{
+			width:300px;
+			margin:20px auto;
+			padding:15px;
+			text-align: center;
+			font-family: 'Baloo Bhaijaan 2', cursive;
+		}
+		form{
+			width:370px;
+			margin:100px auto;
+			padding: 25px;
+			background:rgba(0,0,0,0.3);
+		}
+
+		form div{
+			margin:3px;
+			padding: 3px;
+			text-align: center;
+		}
+
+		form div label{
+			font-family: 'Baloo Bhaijaan 2', cursive;
+			font-size: 25px;
+		}
+
+		input{
+			width:300px;
+			border-radius: 8px;
+			font-family: 'Baloo Bhaijaan 2', cursive;
+			font-size: 15px;
+			
+
+		}
+		form div button{
+            display: block;
+            padding: 5px;
+            margin: -3px auto;
+            width:320px;
+            border:4px solid white;
+            background-color: black;
+			font-family: 'Baloo Bhaijaan 2', cursive;
+            border-radius: 19px;
+            color: white;
+            cursor: pointer;
+			font-size: 25px;
+		}
+
+		form div button:hover{
+			color:red;
+		}
+
+	</style>
+</head>
+
+<body>
+	<div class="container text-center">
+		<div>
+			<h1> Create Post </h1>
+		</div>
+		<form th:action="@{/upload_post}" method="post" th:object="${post1}" <div class="m-3">
+		
+			
+			<div class="form-group row">
+				<label class="col-4 col-form-label">Title: </label>
+				<div class="col-6">
+					<input type="text" class="form-control" th:field="*{Title}" required minlength="2"
+						maxlength="100" />
+				</div>
+			</div>
+			
+			<div class="form-group row">
+				<label class="col-4 col-form-label">Description: </label>
+				<div class="col-6">
+					<input type="text" class="form-control" th:field="*{Description}" required minlength="2"
+						maxlength="500" />
+				</div>
+			</div>
+
+			<div>
+				                <button type="submit" class="btn btn-primary">Upload Post</button>
+				            </div>
+	</div>
+	</form>
+	</div>
+
+</body>
+
+</html>
