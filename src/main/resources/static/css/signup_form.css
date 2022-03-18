@@ -1,0 +1,62 @@
+
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   height: 70vh;
+   font-family: "Roboto", sans-serif;
+}
+
+h1{
+    text-align: center;
+    font-family: "Roboto", sans-serif;
+    font-size: 50px;
+}
+
+.field{
+    display: flex;
+    flex-direction: row;
+    margin: 25px;
+}
+
+label{
+    margin-right:20px ;
+    font-size: 30px;
+}
+
+label.email{
+    margin-right: 80px;
+}
+
+label.password{
+    margin-right: 33px;
+}
+
+.button{
+    text-align: center;
+    font-family: "Roboto", sans-serif;
+}
+.inputbox{
+    padding-top: 10px;
+}
+
+input{
+    padding: 5px;
+    border-radius: 10px;
+    border-width: 1px;
+}
+
+button{
+    font-size: 20px;
+    border: 0;
+    border-radius: 50px;
+    padding: 5px;
+    margin-bottom: 50px;
+    background-color: rgb(175, 175, 175);
+}
+
+button:hover{
+    background-color: black;
+    color: orange;
+}
