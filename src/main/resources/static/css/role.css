@@ -1,0 +1,32 @@
+body{
+    background-color: black;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   height: 70vh;
+   font-family: "Roboto", sans-serif;
+   color: aliceblue;
+}
+
+button{
+    text-align: center;
+    font-family: "Roboto", sans-serif;
+    font-size: 20px;
+    border: 0;
+    border-radius: 50px;
+    padding: 5px;
+    margin-bottom: 50px;
+    background-color: rgb(255, 145, 0);
+}
+
+button:hover{
+    background-color: white;
+    color: blue;
+}
+
+a{
+    text-decoration: none;
+}
