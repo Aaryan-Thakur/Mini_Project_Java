@@ -1,4 +1,6 @@
-
+body{
+    background-color: black;
+}
 
 .container{
     display: flex;
@@ -53,10 +55,17 @@ button{
     border-radius: 50px;
     padding: 5px;
     margin-bottom: 50px;
-    background-color: rgb(175, 175, 175);
+    background-color: rgb(255, 145, 0);
 }
 
 button:hover{
-    background-color: black;
-    color: orange;
+    background-color: white;
+    color: blue;
+}
+
+form{
+    border: 5px;
+    border-color: orange;   
+    border-style: solid;
+    color: aliceblue ;
 }
