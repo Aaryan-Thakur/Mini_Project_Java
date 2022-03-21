@@ -1,0 +1,26 @@
+body{
+    background-color: black;
+    color: aliceblue;
+}
+
+.thead{
+    background-color: grey;
+}
+
+tbody{
+    color:aliceblue;
+}
+
+table{
+    border-style: solid;
+    border-color: orangered;
+}
+
+a{
+    color: orangered;
+}
+
+a:hover{
+    text-decoration: none;
+    color: brown;
+}
