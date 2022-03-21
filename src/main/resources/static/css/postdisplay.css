@@ -1,0 +1,22 @@
+body{
+    background-color: black;
+    color: aliceblue;
+}
+
+tr{
+    color: aliceblue;
+}
+
+
+a{
+    color: orangered;
+}
+
+a:hover{
+    text-decoration: none;
+    color: brown;
+}
+
+.td{
+    color:orangered;
+}
