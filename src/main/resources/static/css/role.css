@@ -11,9 +11,13 @@ body{
    color: aliceblue;
 }
 
-button{
+.button{
     text-align: center;
     font-family: "Roboto", sans-serif;
+}
+
+button{
+
     font-size: 20px;
     border: 0;
     border-radius: 50px;
@@ -30,3 +34,32 @@ button:hover{
 a{
     text-decoration: none;
 }
+
+input{
+    padding: 0px;
+    height: 25px;
+    width: 500px;
+    font-size: large;
+}
+
+.field{
+    display: flex;
+    flex-direction: row;
+    margin: 25px;
+}
+
+h1{
+    text-align: center;
+}
+
+.select{
+    text-align: center;
+    font-size: x-large;
+    border-radius: 15px;
+}
+
+label{
+    padding-right: 10px;
+    font-size: larger ;
+}
+

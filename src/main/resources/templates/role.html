@@ -6,7 +6,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Registeration</title>
+	<title>Request</title>
   <link rel="stylesheet" th:href="@{/css/role.css}" />
 
 
@@ -130,26 +130,28 @@ body {
 </head>
 
 <body>
-	<div><h2 ><button><a th:href="@{/main}">Main Site</a></button></h2></div>
+	<!-- <div><h2 ><button><a th:href="@{/main}">Main Site</a></button></h2></div> -->
 
 	<div class="container">
 		<form th:action="@{/declare_role}" method="post" th:object="${Request}" <div class="m-3">
       <h1> Set your role </h1>
 
-			<select th:field="*{role_id}">
+      <div class="select">
+			<select class="select" th:field="*{role_id}">
     			<option th:value="'2'" th:text="Authority"></option>
     			<option th:value="'3'" th:text="Moderator"></option>
 			</select>
+    </div>
 			
-			<div >
-				<label style="font-weight: 700; " >Enter Aadhar Card Number: </label>
+			<div class="field">
+				<label>Enter Aadhar Card Number: </label>
 				<div >
 					<input type="text" class="form-control" th:field="*{idf}" required minlength="2"
 						maxlength="500" />
 				</div>
 			</div>
 
-			<div>
+			<div class="button">
 			<button type="submit" class="btn btn-primary">Confirm</button>
 			</div>
 	</div>
