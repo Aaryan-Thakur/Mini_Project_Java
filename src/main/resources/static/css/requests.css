@@ -1,0 +1,44 @@
+body{
+    background-color: black;
+    color: aliceblue;
+}
+
+.thead{
+    background-color: grey;
+}
+
+tbody{
+    color:aliceblue;
+}
+
+table{
+    border-style: solid;
+    border-color: orangered;
+}
+
+a{
+    color: orangered;
+}
+
+a:hover{
+    text-decoration: none;
+    color: brown;
+}
+
+.container{
+    width: 1000px;
+}
+
+h1{
+    text-align: center;
+}
+
+td{
+    text-align: center;
+}
+
+.btn-primary{
+    background-color: orangered;
+    border: 0;
+    margin: 5px;
+}
