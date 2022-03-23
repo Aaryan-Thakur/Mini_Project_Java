@@ -10,42 +10,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
 
-
-    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500&display=swap" rel="stylesheet"> -->
-
-    <!-- <style>
-        div h1{
-            width:400px;
-            margin:20px auto;
-            text-align: center;
-            font-family: 'Baloo Bhaijaan 2', cursive;
-        }
-        .container{
-            width:400px;
-            margin:100px auto;
-            padding: 10px;
-            text-align: center;
-        }
-        .container div{
-            padding: 2px;
-            margin:10px;
-            background-color: black;
-            font-family: 'Baloo Bhaijaan 2', cursive;
-            color: antiquewhite;
-            border-radius: 10px;
-        }
-
-        .container div :hover{
-            color: red;
-            cursor: pointer;
-        }
-
-        
-
-    </style> -->
-
 </head>
 
 <body>
@@ -54,13 +18,14 @@
             <h1> Public Griveance Program</h1>
         </div>
 
+        <div class="buttons">
         <div sec:authorize="isAnonymous()">
             <h2><button class="register"><a th:href="@{/register}">Register</a></button></h2></div>
 
         <div sec:authorize="isAnonymous()">
             <h2><button class="login"><a th:href="@{/login}">Login</a></button></h2>
         </div>
-
+        </div>
         <div sec:authorize="isAuthenticated()">
             <h2><button><a th:href="@{/main}">Main Site</a></h2></button>
         </div>
