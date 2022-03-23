@@ -27,6 +27,9 @@ public class AppController {
 	
 	@Autowired
 	private RequestRepo repo3;
+
+	@Autowired
+	private UserRepository repo4;
 	
 	
 	@GetMapping("/home")
@@ -195,7 +198,17 @@ public class AppController {
 		return "deleted";
 	}
 
-	//Test Branch Change
+	@GetMapping("/user/{users.id}")
+	public String user1(@PathVariable("users.id") long id,Model model) {
+		User user = repo4.findByID(id);
+		Iterable<Post> listPosts = repo1.findByOPID(id);
+		model.addAttribute("listPosts", listPosts);
+		model.addAttribute("user", user);
+		
+		return "userpage";
+	}
+
+	
 }
 	
 	
