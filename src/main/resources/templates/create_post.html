@@ -8,61 +8,6 @@
 	<title>Registeration</title>
 	<link rel="stylesheet" th:href="@{/css/create_post.css}" />
 
-
-	<!-- <style>
-		h1{
-			width:300px;
-			margin:20px auto;
-			padding:15px;
-			text-align: center;
-			font-family: 'Baloo Bhaijaan 2', cursive;
-		}
-		form{
-			width:370px;
-			margin:100px auto;
-			padding: 25px;
-			background:rgba(0,0,0,0.3);
-		}
-
-		form div{
-			margin:3px;
-			padding: 3px;
-			text-align: center;
-		}
-
-		form div label{
-			font-family: 'Baloo Bhaijaan 2', cursive;
-			font-size: 25px;
-		}
-
-		input{
-			width:300px;
-			border-radius: 8px;
-			font-family: 'Baloo Bhaijaan 2', cursive;
-			font-size: 15px;
-			
-
-		}
-		form div button{
-            display: block;
-            padding: 5px;
-            margin: -3px auto;
-            width:320px;
-            border:4px solid white;
-            background-color: black;
-			font-family: 'Baloo Bhaijaan 2', cursive;
-            border-radius: 19px;
-            color: white;
-            cursor: pointer;
-			font-size: 25px;
-		}
-
-		form div button:hover{
-			color:red;
-		}
-
-	</style> -->
-
 </head>
 
 <body>
@@ -87,6 +32,17 @@
 						maxlength="500" />
 				</div>
 			</div>
+
+			<div>
+				<label>Category:</label>
+				<select class="select" th:field="*{Category}">
+				<option th:value="'Category_1'" th:text="Category_1"></option>
+    			<option th:value="'Category_2'" th:text="Category_2"></option>
+				<option th:value="'Category_3'" th:text="Category_3"></option>
+				<option th:value="'Category_4'" th:text="Category_4"></option>
+				<option th:value="'Category_5'" th:text="Category_5"></option>
+				</select>
+			</div> 
 
 			<div class="button">
 				<button type="submit" class="btn btn-primary">Upload Post</button>

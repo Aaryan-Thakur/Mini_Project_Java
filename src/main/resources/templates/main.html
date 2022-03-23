@@ -52,14 +52,17 @@
                 <thead class="thead">
                     <tr>
                         <th>Title</th>
-                        <th>Author</th>
+                        <th>User</th>
+                        <th>Category</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr th:each="post: ${listPosts}">
                         <td><a th:text="${post.Title}" target="_blank" /></td>
+
                         <td th:text="${post.username}">Username</td>
+                        <td th:text="${post.Category}"></td>
                         <td>
                             <div><a th:href="@{/post/{id}(id=${post.id})}">[View] </a></div>
                             <div sec:authorize="hasAnyAuthority('AUTH')"><a
