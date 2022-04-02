@@ -42,10 +42,10 @@ public class User {
     private Set<Role> roles = new HashSet<>();
 	
 
-	public int getEnabled() {
+	public Long getEnabled() {
 		return enabled;
 	}
-	public void setEnabled(int enabled) {
+	public void setEnabled(Long enabled) {
 		this.enabled = enabled;
 	}
 	public Long getId() {
@@ -80,7 +80,7 @@ public class User {
 	}
 	
 	
-	private int enabled;
+	private Long enabled;
 	
 	
 	

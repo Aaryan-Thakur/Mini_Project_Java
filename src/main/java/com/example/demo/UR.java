@@ -8,7 +8,7 @@ public class UR {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long rule_id;
+	public Long rule_id;
 	
 	@Column(nullable = true)	
 	public Long user_id;

@@ -21,14 +21,12 @@
     <div class="container">
 		<form th:action="@{/upload_response/{id}(id=${post2.id})}" method="post" th:object="${post2}">
       
-		
-			
-			
-			<div class="current" ><span style="font-size:30px"> Current Response: </span ><span style="font-size:25px" 
+			<!-- <div class="current" ><span style="font-size:30px"> Current Response: </span ><span style="font-size:25px" 
 			th:text="${post2.Respone != null} ? ${post2.Respone} : 'No response yet'" ></span ></div >
 			<div class="current" ><span style="font-size:30px"> Current Reponder: </span ><span style="font-size:25px" 
 			th:text="${post2.Responder != null} ? ${post2.Responder} : 'No response yet'" ></span ></div >
-			
+			 -->
+
 			<div class="field">
 				<label class="response" >Response: </label>
 				<div>

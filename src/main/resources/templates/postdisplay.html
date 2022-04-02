@@ -75,31 +75,33 @@
 			</tr>
 		</table>
 
-<!-- 
+
 		<div>
-            <h1>List of Posts</h1>
+            <h1>Current Responses</h1>
         </div>
 
         <div>
             <table class="table table-striped table-bordered">
                 <thead class="thead">
                     <tr>
-                        <th>Title</th>
-                        <th>User</th>
+                        <th>Response</th>
+                        <th>Responder</th>
+						<th>Date</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="response: ${Reponses}">
+                    <tr th:each="response: ${responses}">
 
-                        <td><a th:text="${response.response}" target="_blank"></a></td>
+                        <td><a th:text="${response.Response}" target="_blank"></a></td>
 
-                        <td><a th:text="${response.responder}" th:href="@{/user/{id}(id=${response.OP_id})}"></a></td>
+                        <td><a th:text="${response.Responder}"></a></td>
+						<td><a th:text="${response.Create_Date}"></a></td>
                     </tr>
                 </tbody>
             </table>
         </div>
 
- -->
+
 
 
 

@@ -90,11 +90,11 @@ public class AppController {
 	public String singlePathVariable(@PathVariable("post.id") long id,Model model) {
 		Post post = repo1.findByID(id);
 		
-		Iterable<Response> responses = repo5.findByPostID(id);
+		Response responses = repo5.findByID(post);
 
-
+		
 		model.addAttribute("post", post);
-		model.addAttribute("Reponses", responses);
+		model.addAttribute("responses", responses);
 
 
 		return "postdisplay";
@@ -107,12 +107,23 @@ public class AppController {
 		return "add_response";
 	}
 	
+	// @PostMapping("/upload_response/{post.id}")
+	// public String upload_response(@AuthenticationPrincipal CustomUserDetails user,@PathVariable("post.id") long id,@RequestParam String sourceText) {
+	// 	Post post = repo1.findByID(id);
+	// 	post.Respone = sourceText;
+	// 	post.Responder = user.getFullName();
+	// 	repo1.save(post);
+	// 	return "response_success";
+	// 	}
+
 	@PostMapping("/upload_response/{post.id}")
 	public String upload_response(@AuthenticationPrincipal CustomUserDetails user,@PathVariable("post.id") long id,@RequestParam String sourceText) {
+		
 		Post post = repo1.findByID(id);
-		post.Respone = sourceText;
-		post.Responder = user.getFullName();
-		repo1.save(post);
+		Response response = repo5.findByID(post);
+		response.Response = sourceText;
+		response.Responder = user.getFullName();
+		repo5.save(response);
 		return "response_success";
 		}
 	
