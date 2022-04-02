@@ -1,7 +1,7 @@
 package com.example.demo;
 
 import javax.persistence.Column;
-import java.time.LocalDate;
+import java.time.*;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -49,15 +49,16 @@ public class Response {
 	
 //////////////////////////////////////////////////////////////////////
 
-	@Column(nullable = true,length=10)	
-	public LocalDate Create_Date;
+	@Column(nullable = true)	
+	public LocalDateTime Create_Date;
 
-	public LocalDate getCreate_Date() {
-		return Create_Date;
-	}
-	public void setCreate_Date(LocalDate create_Date) {
-		Create_Date = create_Date;
-	}
+    public LocalDateTime getCreate_Date() {
+        return this.Create_Date;
+    }
+
+    public void setCreate_Date(LocalDateTime Create_Date) {
+        this.Create_Date = Create_Date;
+    }
 
 //////////////////////////////////////////////////////////////////////
 

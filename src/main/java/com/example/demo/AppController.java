@@ -77,7 +77,7 @@ public class AppController {
 	@PostMapping("/upload_post")
 	public String upload_post(@AuthenticationPrincipal CustomUserDetails user,Post post) {
 		post.setUsername(user.getFullName());
-		post.setCreate_Date(LocalDate.now());
+		post.setCreate_Date(LocalDateTime						.now());
 		post.setEmail(user.getUsername());
 		post.setOP_id(user.getuserid());
 		repo1.save(post);
@@ -120,7 +120,7 @@ public class AppController {
 		response.post_id = post;
 		response.Response = sourceText;
 		response.Responder = user.getFullName();
-		response.Create_Date = LocalDate.now();
+		response.Create_Date = LocalDateTime.now();
 		repo5.save(response);
 		return "response_success";
 		}
