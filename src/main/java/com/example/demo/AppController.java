@@ -99,8 +99,7 @@ public class AppController {
 	public String singlePathVariable1(@PathVariable("post.id") long id,Model model) {
 		Post post = repo1.findByID(id);
 		model.addAttribute("post2", post);
-		// model.addAttribute("post1", new Response());
-
+		
 		return "add_response";
 	}
 	
@@ -121,6 +120,8 @@ public class AppController {
 		response.Response = sourceText;
 		response.Responder = user.getFullName();
 		response.Create_Date = LocalDateTime.now();
+		post.Status = (long) 1;
+		repo1.save(post);
 		repo5.save(response);
 		return "response_success";
 		}

@@ -137,4 +137,15 @@ public class Post {
 
 /////////////////////////////////////////////////////////////////////
 
+	@Column(nullable = false)	
+	public Long Status = (long) 0;
+
+	public Long getStatus() {
+		return this.Status;
+	}
+
+	public void setStatus(Long Status) {
+		this.Status = Status;
+	}
+
 }
