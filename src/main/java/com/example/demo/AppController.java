@@ -1,6 +1,6 @@
 package com.example.demo;
 
-import java.time.LocalDate;
+import java.time.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -89,14 +89,9 @@ public class AppController {
 	@GetMapping("/post/{post.id}")
 	public String singlePathVariable(@PathVariable("post.id") long id,Model model) {
 		Post post = repo1.findByID(id);
-		
-		Response responses = repo5.findByID(post);
-
-		
+		Iterable<Response> responses = repo5.findByID(post);
 		model.addAttribute("post", post);
 		model.addAttribute("responses", responses);
-
-
 		return "postdisplay";
 	}
 	
@@ -104,6 +99,8 @@ public class AppController {
 	public String singlePathVariable1(@PathVariable("post.id") long id,Model model) {
 		Post post = repo1.findByID(id);
 		model.addAttribute("post2", post);
+		// model.addAttribute("post1", new Response());
+
 		return "add_response";
 	}
 	
@@ -118,11 +115,12 @@ public class AppController {
 
 	@PostMapping("/upload_response/{post.id}")
 	public String upload_response(@AuthenticationPrincipal CustomUserDetails user,@PathVariable("post.id") long id,@RequestParam String sourceText) {
-		
 		Post post = repo1.findByID(id);
-		Response response = repo5.findByID(post);
+		Response response = new Response();
+		response.post_id = post;
 		response.Response = sourceText;
 		response.Responder = user.getFullName();
+		response.Create_Date = LocalDate.now();
 		repo5.save(response);
 		return "response_success";
 		}
