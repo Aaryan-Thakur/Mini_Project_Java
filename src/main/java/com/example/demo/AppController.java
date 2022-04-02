@@ -30,6 +30,9 @@ public class AppController {
 
 	@Autowired
 	private UserRepository repo4;
+
+	@Autowired
+	private ResponseRepo repo5;
 	
 	
 	@GetMapping("/home")
@@ -86,8 +89,14 @@ public class AppController {
 	@GetMapping("/post/{post.id}")
 	public String singlePathVariable(@PathVariable("post.id") long id,Model model) {
 		Post post = repo1.findByID(id);
-		model.addAttribute("post", post);
 		
+		Iterable<Response> responses = repo5.findByPostID(id);
+
+
+		model.addAttribute("post", post);
+		model.addAttribute("Reponses", responses);
+
+
 		return "postdisplay";
 	}
 	
