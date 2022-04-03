@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import java.lang.ProcessBuilder.Redirect;
 import java.time.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,9 @@ public class AppController {
 
 	@Autowired
 	private ResponseRepo repo5;
+
+	@Autowired
+	private CommentRepo repo6;
 	
 	
 	@GetMapping("/home")
@@ -90,11 +94,27 @@ public class AppController {
 	public String singlePathVariable(@PathVariable("post.id") long id,Model model) {
 		Post post = repo1.findByID(id);
 		Iterable<Response> responses = repo5.findByID(post);
+		Iterable<Comment> comments = repo6.findByID(post);
 		model.addAttribute("post", post);
 		model.addAttribute("responses", responses);
+		model.addAttribute("comments", comments);
 		return "postdisplay";
 	}
 	
+	@PostMapping("/upload_response/{post.id}")
+	public String upload_response(@AuthenticationPrincipal CustomUserDetails user,@PathVariable("post.id") long id,@RequestParam String sourceText) {
+		Post post = repo1.findByID(id);
+		Response response = new Response();
+		response.post_id = post;
+		response.Response = sourceText;
+		response.Responder = user.getFullName();
+		response.Create_Date = LocalDateTime.now();
+		post.Status = (long) 1;
+		repo1.save(post);
+		repo5.save(response);
+		return "response_success";
+		}
+
 	@GetMapping("/add_response/{post.id}")
 	public String singlePathVariable1(@PathVariable("post.id") long id,Model model) {
 		Post post = repo1.findByID(id);
@@ -112,18 +132,16 @@ public class AppController {
 	// 	return "response_success";
 	// 	}
 
-	@PostMapping("/upload_response/{post.id}")
-	public String upload_response(@AuthenticationPrincipal CustomUserDetails user,@PathVariable("post.id") long id,@RequestParam String sourceText) {
+	@PostMapping("/upload_comment/{post.id}")
+	public String upload_comment(@AuthenticationPrincipal CustomUserDetails user,@PathVariable("post.id") long id,@RequestParam String sourceText) {
 		Post post = repo1.findByID(id);
-		Response response = new Response();
-		response.post_id = post;
-		response.Response = sourceText;
-		response.Responder = user.getFullName();
-		response.Create_Date = LocalDateTime.now();
-		post.Status = (long) 1;
-		repo1.save(post);
-		repo5.save(response);
-		return "response_success";
+		Comment comment = new Comment();
+		comment.post_id = post;
+		comment.comment = sourceText;
+		comment.commentor = user.getFullName();
+		comment.Create_Date = LocalDateTime.now();
+		repo6.save(comment);
+		return "redirect:/post/{post.id}";
 		}
 	
 	@GetMapping("/edit_des/{post.id}")
