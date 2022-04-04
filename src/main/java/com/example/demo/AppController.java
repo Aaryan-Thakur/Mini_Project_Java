@@ -1,6 +1,7 @@
 package com.example.demo;
 
-import java.time.LocalDate;
+import java.lang.ProcessBuilder.Redirect;
+import java.time.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -30,6 +31,12 @@ public class AppController {
 
 	@Autowired
 	private UserRepository repo4;
+
+	@Autowired
+	private ResponseRepo repo5;
+
+	@Autowired
+	private CommentRepo repo6;
 	
 	
 	@GetMapping("/home")
@@ -74,7 +81,7 @@ public class AppController {
 	@PostMapping("/upload_post")
 	public String upload_post(@AuthenticationPrincipal CustomUserDetails user,Post post) {
 		post.setUsername(user.getFullName());
-		post.setCreate_Date(LocalDate.now());
+		post.setCreate_Date(LocalDateTime						.now());
 		post.setEmail(user.getUsername());
 		post.setOP_id(user.getuserid());
 		repo1.save(post);
@@ -86,25 +93,55 @@ public class AppController {
 	@GetMapping("/post/{post.id}")
 	public String singlePathVariable(@PathVariable("post.id") long id,Model model) {
 		Post post = repo1.findByID(id);
+		Iterable<Response> responses = repo5.findByID(post);
+		Iterable<Comment> comments = repo6.findByID(post);
 		model.addAttribute("post", post);
-		
+		model.addAttribute("responses", responses);
+		model.addAttribute("comments", comments);
 		return "postdisplay";
-	}
-	
-	@GetMapping("/add_response/{post.id}")
-	public String singlePathVariable1(@PathVariable("post.id") long id,Model model) {
-		Post post = repo1.findByID(id);
-		model.addAttribute("post2", post);
-		return "add_response";
 	}
 	
 	@PostMapping("/upload_response/{post.id}")
 	public String upload_response(@AuthenticationPrincipal CustomUserDetails user,@PathVariable("post.id") long id,@RequestParam String sourceText) {
 		Post post = repo1.findByID(id);
-		post.Respone = sourceText;
-		post.Responder = user.getFullName();
+		Response response = new Response();
+		response.post_id = post;
+		response.Response = sourceText;
+		response.Responder = user.getFullName();
+		response.Create_Date = LocalDateTime.now();
+		post.Status = (long) 1;
 		repo1.save(post);
+		repo5.save(response);
 		return "response_success";
+		}
+
+	@GetMapping("/add_response/{post.id}")
+	public String singlePathVariable1(@PathVariable("post.id") long id,Model model) {
+		Post post = repo1.findByID(id);
+		model.addAttribute("post2", post);
+		
+		return "add_response";
+	}
+	
+	// @PostMapping("/upload_response/{post.id}")
+	// public String upload_response(@AuthenticationPrincipal CustomUserDetails user,@PathVariable("post.id") long id,@RequestParam String sourceText) {
+	// 	Post post = repo1.findByID(id);
+	// 	post.Respone = sourceText;
+	// 	post.Responder = user.getFullName();
+	// 	repo1.save(post);
+	// 	return "response_success";
+	// 	}
+
+	@PostMapping("/upload_comment/{post.id}")
+	public String upload_comment(@AuthenticationPrincipal CustomUserDetails user,@PathVariable("post.id") long id,@RequestParam String sourceText) {
+		Post post = repo1.findByID(id);
+		Comment comment = new Comment();
+		comment.post_id = post;
+		comment.comment = sourceText;
+		comment.commentor = user.getFullName();
+		comment.Create_Date = LocalDateTime.now();
+		repo6.save(comment);
+		return "redirect:/post/{post.id}";
 		}
 	
 	@GetMapping("/edit_des/{post.id}")

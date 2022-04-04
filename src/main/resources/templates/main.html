@@ -68,8 +68,8 @@
                             <div><a th:href="@{/post/{id}(id=${post.id})}">[View] </a></div>
                             <div sec:authorize="hasAnyAuthority('AUTH')"><a
                                     th:href="@{/add_response/{id}(id=${post.id})}" /> [Add Official Respone]</div>
-                            <!--<div ><a  th:href="@{/edit_des/{id}(id=${post.id})}"/> [Edit Description]</div  > -->
-                            <div sec:authorize="hasAnyAuthority('MOD','ADMIN')"><a
+
+                                    <div sec:authorize="hasAnyAuthority('MOD','ADMIN')"><a
                                     th:href="@{/delete/{id}(id=${post.id})}">[Delete] </a></div>
 
                         </td>
