@@ -69,9 +69,11 @@ public class AppController {
 	}
 	
 	@GetMapping("/main")
-	public String mainpage(Model model) {
+	public String mainpage(@AuthenticationPrincipal CustomUserDetails user,Model model) {
 		Iterable<Post> listPosts = repo1.findAll();
+		User userr = repo.findByID(user.getuserid());
 		model.addAttribute("listPosts", listPosts);
+		model.addAttribute("user", userr);
 		return "main";
 	}
 	
@@ -137,6 +139,25 @@ public class AppController {
 		return "add_response";
 	}
 	
+	@GetMapping("/maresolved/{post.id}")
+	public String maresolved(@AuthenticationPrincipal CustomUserDetails user,@PathVariable("post.id") long id) {
+		Post post = repo1.findByID(id);
+		post.Status = (long) 3;
+		post.Resolver = user.getFullName();
+		post.R_id = user.getuserid();
+		repo1.save(post);
+		return "redirect:/main";
+		}
+
+	@GetMapping("/maresolvedOP/{post.id}")
+	public String maresolvedOP(@AuthenticationPrincipal CustomUserDetails user,@PathVariable("post.id") long id) {
+		Post post = repo1.findByID(id);
+		post.Status = (long) 2;
+		repo1.save(post);
+		return "redirect:/main";
+		}
+
+
 	// @PostMapping("/upload_response/{post.id}")
 	// public String upload_response(@AuthenticationPrincipal CustomUserDetails user,@PathVariable("post.id") long id,@RequestParam String sourceText) {
 	// 	Post post = repo1.findByID(id);

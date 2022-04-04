@@ -168,5 +168,28 @@ public class Post {
 		this.photos = photos;
 	}
 
+/////////////////////////////////////////////////////////////////////////
+	@Column(nullable = true, length = 100)
+		public String Resolver;
 
+	public String getResolver() {
+		return this.Resolver;
+	}
+
+	public void setResolver(String Resolver) {
+		this.Resolver = Resolver;
+	}
+
+/////////////////////////////////////////////////////////////////////////
+
+	@Column(nullable = true)	
+		public Long R_id;
+
+	public Long getR_id() {
+		return this.R_id;
+	}
+
+	public void setR_id(Long R_id) {
+		this.R_id = R_id;
+	}
 }
