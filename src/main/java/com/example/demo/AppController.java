@@ -1,6 +1,7 @@
 package com.example.demo;
 
-import java.lang.ProcessBuilder.Redirect;
+import java.io.IOException;
+// import java.lang.ProcessBuilder.Redirect;
 import java.time.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,10 +9,12 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 
 @Controller
@@ -79,12 +82,23 @@ public class AppController {
 	}
 	
 	@PostMapping("/upload_post")
-	public String upload_post(@AuthenticationPrincipal CustomUserDetails user,Post post) {
+	public String upload_post(@AuthenticationPrincipal CustomUserDetails user,Post post,@RequestParam("image") MultipartFile multipartFile) throws IOException {
 		post.setUsername(user.getFullName());
-		post.setCreate_Date(LocalDateTime						.now());
+		post.setCreate_Date(LocalDateTime.now());
 		post.setEmail(user.getUsername());
 		post.setOP_id(user.getuserid());
 		repo1.save(post);
+		
+		String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+        post.setPhotos(fileName);
+
+		Post savedUser = repo1.save(post);
+
+		String uploadDir = "user-photos/" + savedUser.getId();
+ 
+        FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+
+
 		return "post_success";
 	}
 	

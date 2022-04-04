@@ -7,10 +7,18 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "posts")
 public class Post {
+
+	@Transient
+    public String getPhotosImagePath() {
+        if (photos == null || id == null) return null;
+         
+        return "/user-photos/" + id + "/" + photos;
+	}
 
 	
 ///////////////////////////////////////////////////////////////////
@@ -147,5 +155,18 @@ public class Post {
 	public void setStatus(Long Status) {
 		this.Status = Status;
 	}
+///////////////////////////////////////////////////////////////////////
+	@Column(nullable = true, length = 64)
+    public String photos;
+
+
+	public String getPhotos() {
+		return this.photos;
+	}
+
+	public void setPhotos(String photos) {
+		this.photos = photos;
+	}
+
 
 }

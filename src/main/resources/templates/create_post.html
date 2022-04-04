@@ -12,7 +12,8 @@
 
 <body>
 	<div class="container">
-		<form th:action="@{/upload_post}" method="post" th:object="${post1}" <div class="m-3">
+		<form th:action="@{/upload_post}" method="post" th:object="${post1}" enctype="multipart/form-data">
+			<div class="m-3">
 			<h1> Create Post </h1>
 
 		
@@ -43,6 +44,12 @@
 				<option th:value="'Category_5'" th:text="Category_5"></option>
 				</select>
 			</div> 
+
+			<div>
+				<label>Photos: </label>
+				<input type="file" name="image" accept="image/png, image/jpeg" />
+			</div>
+
 
 			<div class="button">
 				<button type="submit" class="btn btn-primary">Upload Post</button>
