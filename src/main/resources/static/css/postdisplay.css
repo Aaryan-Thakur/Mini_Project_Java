@@ -57,3 +57,25 @@ button:hover{
     background-color: white;
     color: blue;
 }
+
+.field{
+    display: flex;
+    flex-direction: row;
+    margin: 25px;
+}
+
+h1{
+    text-align: center;
+}
+
+.select{
+    text-align: center;
+    font-size: x-large;
+    border-radius: 15px;
+}
+
+label{
+    padding-right: 10px;
+    font-size: larger ;
+}
+
