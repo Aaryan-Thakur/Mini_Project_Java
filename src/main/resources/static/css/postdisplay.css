@@ -44,6 +44,14 @@ label{
     justify-content: center;
 }
 
+a{
+    text-decoration: none;
+}
+
+a:hover{
+    text-decoration: none;
+}
+
 button{
     font-size: 20px;
     border: 0;
@@ -51,11 +59,13 @@ button{
     padding: 5px;
     margin-bottom: 50px;
     background-color: orangered;
+    text-decoration: none;
 }
 
 button:hover{
     background-color: white;
     color: blue;
+    text-decoration: none;
 }
 
 .field{

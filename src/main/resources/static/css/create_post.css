@@ -66,3 +66,7 @@ input.des{
     font-size: 25px;
     text-align: start;
 }
+
+a{
+    text-decoration: none;
+}
