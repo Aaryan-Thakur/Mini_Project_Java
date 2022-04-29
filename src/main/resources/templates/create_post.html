@@ -5,13 +5,14 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Registeration</title>
+	<title>Create Post</title>
 	<link rel="stylesheet" th:href="@{/css/create_post.css}" />
 
 </head>
 
 <body>
 	<div class="container">
+		<img th:src="../static/images/house-black-silhouette-without-door.png" ></img>
 		<form th:action="@{/upload_post}" method="post" th:object="${post1}" enctype="multipart/form-data">
 			<div class="m-3">
 			<h1> Create Post </h1>
