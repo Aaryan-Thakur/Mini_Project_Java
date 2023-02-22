@@ -4,6 +4,7 @@ Public Grievance Program is website made with keeping ease of use in mind,this p
 VIDEO DEMO - https://www.youtube.com/watch?v=tx0ora2t3Dw
 
 The program consists of 4 roles
+
 USERS- These are common users with no special control,this role is meant for everyday common person who just uses the platform to make complaints
 
 MODERATOR- The moderator makes sure no inappropriate/incorrect posts are present on the platform.Moderators have to ability to delete posts
