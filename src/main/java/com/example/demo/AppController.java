@@ -71,20 +71,24 @@ public class AppController {
 	@GetMapping("/main")
 	public String mainpage(@AuthenticationPrincipal CustomUserDetails user,Model model) {
 		Iterable<Post> listPosts = repo1.findAll();
-		User userr = repo.findByID(user.getuserid());
 		model.addAttribute("listPosts", listPosts);
+		User userr = repo.findByID(user.getuserid());
 		model.addAttribute("user", userr);
 		return "main";
 	}
 	
 	@GetMapping("/create_post")
-	public String showUploadForm(Model model) {
+	public String showUploadForm(@AuthenticationPrincipal CustomUserDetails user,Model model) {
+		User userr = repo.findByID(user.getuserid());
 		model.addAttribute("post1", new Post());
+		model.addAttribute("user", userr);
+
+		
 		return "create_post";
 	}
 	
 	@PostMapping("/upload_post")
-	public String upload_post(@AuthenticationPrincipal CustomUserDetails user,Post post,@RequestParam("image") MultipartFile multipartFile) throws IOException {
+	public String upload_post(@AuthenticationPrincipal CustomUserDetails user,Post post,@RequestParam("image") MultipartFile multipartFile,Model model) throws IOException {
 		post.setUsername(user.getFullName());
 		post.setCreate_Date(LocalDateTime.now());
 		post.setEmail(user.getUsername());
@@ -100,6 +104,11 @@ public class AppController {
  
         FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
 
+		User userr = repo.findByID(user.getuserid());
+		model.addAttribute("user", userr);
+
+		
+
 
 		return "post_success";
 	}
@@ -107,18 +116,20 @@ public class AppController {
 
 	
 	@GetMapping("/post/{post.id}")
-	public String singlePathVariable(@PathVariable("post.id") long id,Model model) {
+	public String singlePathVariable(@AuthenticationPrincipal CustomUserDetails user,@PathVariable("post.id") long id,Model model) {
 		Post post = repo1.findByID(id);
 		Iterable<Response> responses = repo5.findByID(post);
 		Iterable<Comment> comments = repo6.findByID(post);
 		model.addAttribute("post", post);
 		model.addAttribute("responses", responses);
 		model.addAttribute("comments", comments);
+		User userr = repo.findByID(user.getuserid());
+		model.addAttribute("user", userr);
 		return "postdisplay";
 	}
 	
 	@PostMapping("/upload_response/{post.id}")
-	public String upload_response(@AuthenticationPrincipal CustomUserDetails user,@PathVariable("post.id") long id,@RequestParam String sourceText) {
+	public String upload_response(@AuthenticationPrincipal CustomUserDetails user,@PathVariable("post.id") long id,@RequestParam String sourceText,Model model) {
 		Post post = repo1.findByID(id);
 		Response response = new Response();
 		response.post_id = post;
@@ -128,13 +139,19 @@ public class AppController {
 		post.Status = (long) 1;
 		repo1.save(post);
 		repo5.save(response);
+		User userr = repo.findByID(user.getuserid());
+		model.addAttribute("user", userr);
 		return "response_success";
+
+
 		}
 
 	@GetMapping("/add_response/{post.id}")
-	public String singlePathVariable1(@PathVariable("post.id") long id,Model model) {
+	public String singlePathVariable1(@AuthenticationPrincipal CustomUserDetails user,@PathVariable("post.id") long id,Model model) {
 		Post post = repo1.findByID(id);
 		model.addAttribute("post2", post);
+		User userr = repo.findByID(user.getuserid());
+		model.addAttribute("user", userr);
 		
 		return "add_response";
 	}
@@ -180,17 +197,21 @@ public class AppController {
 		}
 	
 	@GetMapping("/edit_des/{post.id}")
-	public String singlePathVariable2(@PathVariable("post.id") long id,Model model) {
+	public String singlePathVariable2(@AuthenticationPrincipal CustomUserDetails user,@PathVariable("post.id") long id,Model model) {
 		Post post = repo1.findByID(id);
 		model.addAttribute("post3", post);
+		User userr = repo.findByID(user.getuserid());
+		model.addAttribute("user", userr);
 		return "edit_des";
 	}
 	
 	@PostMapping("/upload_des/{post.id}")
-	public String upload_des(@PathVariable("post.id") long id,@RequestParam String sourceText) {
+	public String upload_des(@AuthenticationPrincipal CustomUserDetails user,@PathVariable("post.id") long id,@RequestParam String sourceText,Model model) {
 		Post post = repo1.findByID(id);
 		post.Description = sourceText;
 		repo1.save(post);
+		User userr = repo.findByID(user.getuserid());
+		model.addAttribute("user", userr);
 		return "post_success";
 		}
 	
@@ -213,11 +234,13 @@ public class AppController {
 	@GetMapping("/role")
 	public String showroleoptions(@AuthenticationPrincipal CustomUserDetails user,Model model) {
 		model.addAttribute("Request",new Request());
+		User userr = repo.findByID(user.getuserid());
+		model.addAttribute("user", userr);
 		return "role";
 	}
 	
 	@PostMapping("/declare_role")
-	public String uploadrole(@AuthenticationPrincipal CustomUserDetails user,Request R) {
+	public String uploadrole(@AuthenticationPrincipal CustomUserDetails user,Request R,Model model) {
 		
 		R.req_user_id=user.getuserid();
 		R.setUsername(user.getFullName());
@@ -228,19 +251,23 @@ public class AppController {
 			R.setRolename("Moderator");
 		
 		repo3.save(R);
+		User userr = repo.findByID(user.getuserid());
+		model.addAttribute("user", userr);
 		return "request_success";
 	}
 	
 	@GetMapping("/requests")
-	public String req(Model model) {
+	public String req(@AuthenticationPrincipal CustomUserDetails user,Model model) {
 		Iterable<Request> listRequests = repo3.findAll();
 		model.addAttribute("listRequests", listRequests);
+		User userr = repo.findByID(user.getuserid());
+		model.addAttribute("user", userr);
 		
 		return "requests";
 	}
 	
 	@PostMapping("/approve/{id}")
-	public String approve(@PathVariable("id") long id) {
+	public String approve(@AuthenticationPrincipal CustomUserDetails user,@PathVariable("id") long id,Model model) {
 		
 		Request req = repo3.findByID(id);
 		
@@ -252,20 +279,26 @@ public class AppController {
 		repo2.save(UR1);
 		
 		repo3.deleteById(id);
+		User userr = repo.findByID(user.getuserid());
+		model.addAttribute("user", userr);
 		
-		return "requests";
+		return "approved";
 	}
 	
 	@PostMapping("/deny/{id}")
-	public String deny(@PathVariable("id") long id) {
+	public String deny(@AuthenticationPrincipal CustomUserDetails user,@PathVariable("id") long id,Model model) {
 		
 		repo3.deleteById(id);
-		return "requests";
+		User userr = repo.findByID(user.getuserid());
+		model.addAttribute("user", userr);
+		return "denied";
 	}
 	
 	@GetMapping("/delete/{post.id}")
-	public String singlePathVariable3(@PathVariable("post.id") long id,Model model) {
+	public String singlePathVariable3(@AuthenticationPrincipal CustomUserDetails user,@PathVariable("post.id") long id,Model model) {
 		repo1.deleteById(id);
+		User userr = repo.findByID(user.getuserid());
+		model.addAttribute("user", userr);
 		
 		return "deleted";
 	}
@@ -276,6 +309,7 @@ public class AppController {
 		Iterable<Post> listPosts = repo1.findByOPID(id);
 		model.addAttribute("listPosts", listPosts);
 		model.addAttribute("user", user);
+		
 		
 		return "userpage";
 	}

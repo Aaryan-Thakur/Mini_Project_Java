@@ -4,33 +4,34 @@
 <head>
     <meta charset="UTF-8">
     <title>Homepage</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
 
-    <link rel="stylesheet" th:href="@{/css/index.css}" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" th:href="@{/css/index.css}">
 
 </head>
 
 <body>
-    <div class="container text-center">
+    <div class="container">
         <div class="title">
             <h1> Public Griveance Program</h1>
         </div>
 
-        <div class="buttons">
+        <div>
         <div sec:authorize="isAnonymous()">
-            <h2><button class="register"><a th:href="@{/register}">Register</a></button></h2></div>
+            <a class="button" th:href="@{/register}">Register</a>
 
         <div sec:authorize="isAnonymous()">
-            <h2><button class="login"><a th:href="@{/login}">Login</a></button></h2>
+           <a class="button"th:href="@{/login}">Login</a>
         </div>
         </div>
         <div sec:authorize="isAuthenticated()">
-            <h2><button><a th:href="@{/main}">Main Site</a></button></h2>
+            <a class="button"th:href="@{/main}">Main Site</a>
         </div>
 
         <div sec:authorize="isAuthenticated()">
-            <h2><button><a th:href="@{/logout}">Logout</a></h2></button>
+            <h2><button><a th:href="@{/logout}">Logout</a></button></h2>
         </div>
 
     </div>

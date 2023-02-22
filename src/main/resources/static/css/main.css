@@ -1,4 +1,38 @@
+html{
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+  }
+  
 body{
+    margin: 0%;
+    border:0%;
+    outline:0%;
+  
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.title{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#addpost{
+    font-size: 35px;
+    color: aliceblue;
+    background-color: blueviolet;
+    border-radius: 50%;
+    display: flex;
+    margin: 12px
+}
+
+/* body{
     background-color: black;
     color: aliceblue;
 }
@@ -23,4 +57,4 @@ a{
 a:hover{
     text-decoration: none;
     color: brown;
-}
+} */

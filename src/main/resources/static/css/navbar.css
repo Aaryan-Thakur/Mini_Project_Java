@@ -1,0 +1,89 @@
+.navbar{
+    width: 100vw;
+    height: 40px;
+    background-color: rgb(192, 192, 192);
+    display: flex;
+    justify-content: flex-end;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    flex-direction: row;
+    padding: 0 1rem;
+}
+
+.name{
+    color: aliceblue;
+    font-size: large;
+    margin: 0%;
+}
+.name-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.material-symbols-outlined {
+  color: aliceblue;
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+}
+
+
+button.account{
+    color: aliceblue;
+    padding: 0%;
+}
+
+#home{
+ margin-top: auto;
+ margin-bottom: auto;
+ font-size: 4rem;
+}
+
+.role{
+    margin-right: auto; 
+    margin-top: auto;
+    margin-bottom: auto;
+    
+}
+
+.role-name{
+    margin-top: auto;
+    margin-bottom: auto;
+    color: black;
+}
+
+.dropdown1{
+    width: 10vw;
+}
+
+#dropmenu{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 7px;
+    background-color: rgb(223, 223, 223);
+    border-radius: 10%;
+    width: 120px;
+}
+
+.button.button-clear:focus, .button.button-clear:hover, button.button-clear:focus, button.button-clear:hover, input[type='button'].button-clear:focus, input[type='button'].button-clear:hover, input[type='reset'].button-clear:focus, input[type='reset'].button-clear:hover, input[type='submit'].button-clear:focus, input[type='submit'].button-clear:hover {
+    background-color: transparent;
+    border-color: transparent;
+    color: aliceblue;
+}
+
+.menuitem{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+}
+
+#checkrolebutton{
+    display: flex;
+    flex-direction: column;
+}

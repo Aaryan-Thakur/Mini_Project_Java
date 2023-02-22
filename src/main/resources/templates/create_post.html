@@ -6,14 +6,17 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Create Post</title>
-	<link rel="stylesheet" th:href="@{/css/create_post.css}" />
-
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
 </head>
 
 <body>
-		<button><a th:href="@{/main}">Main Site</a></button>
+
+	<div th:replace="@{fragment/navbar}"></div>
 
 	<div class="container">
+
 
 
 		<form th:action="@{/upload_post}" method="post" th:object="${post1}" enctype="multipart/form-data">
@@ -44,6 +47,8 @@
 					<option th:value="'Drainage_System'" th:text="Drainage_System"></option>
 					<option th:value="'Pest_Control'" th:text="Pest_Control"></option>
 					<option th:value="'Electricity'" th:text="Electricity"></option>
+					<option th:value="'Other'" th:text="Other"></option>
+
 				</select>
 			</div> 
 
@@ -53,8 +58,8 @@
 			</div>
 
 
-			<div class="button">
-				<button type="submit" class="btn btn-primary">Upload Post</button>
+			<div>
+				<button type="submit" class="button">Upload Post</button>
 			</div>
 	</div>
 	</form>

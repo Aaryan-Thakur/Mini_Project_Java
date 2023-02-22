@@ -3,15 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Success</title>
-    <link rel="stylesheet" th:href="@{/css/post_success.css}" />
-    <link rel="stylesheet" href="../static/css/post_success.css">
-
-
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+    <link rel="stylesheet" th:href="@{/css/inbetween.css}">
+    
+    
 </head>
 <body>
-<div class="container text-center">
-<div><h1> Registered Successfully </h1></div>
-<div><h2><button><a th:href="@{/}">Main Site</a></button></h2s></div>
+    <div class="container text-center">
+        <div><h1 style="text-align: center"> Registered Successfully </h1></div>
+        <div><a class="button"th:href="@{/login}">Login Page</a></div>
 </div>
 </body>
 </html>

@@ -4,83 +4,14 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Registration</title>
-	<link rel="stylesheet" th:href="@{/css/signup_form.css}" />
-
-
-	<!-- <style>
-
-		.mid{
-			display: block;
-            margin:20px auto;
-            text-align: center;
-			background-color: black;
-			text-align: center;
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+	<style>
+		body{
+			margin-top:50px
 		}
-
-		nav div {
-			display: inline-block;
-		}
-
-		nav div a {
-			padding: 5px 50px;
-		    border-radius: 19px;
-		}
-
-		a{
-			text-decoration: none;
-			color: white;
-			font-family: 'Baloo Bhaijaan 2', cursive;
-			font-size: 25px;
-			padding: 25px;
-		}
-		nav div a:hover{
-            color: red;
-        }
-		#recent{
-            color:gray;
-
-        }
-		
-		form{
-			width:360px;
-			margin: 71px auto;
-			text-align: center;
-			background:rgba(0,0,0,0.3);
-		}
-
-		form div{
-			margin:5px;
-			padding: 5px;
-		}
-
-		form div label{
-			font-family: 'Pacifico', cursive;
-		}
-
-		form div input{
-			display: block;
-            border:2px solid grey;
-            border-radius: 19px;
-            padding:5px;
-            margin:-6px auto;
-            width: 300px;
-            text-align: center;
-			font-family: 'Baloo Bhaijaan 2', cursive;
-            font-size: 15px;
-		}
-		form div button{
-            display: block;
-            padding: 5px;
-            margin: -3px auto;
-            width:320px;
-            border:4px solid white;
-            background-color: black;
-			font-family: 'Baloo Bhaijaan 2', cursive;
-            border-radius: 19px;
-            color: white;
-            cursor: pointer;
-        }
-	</style> -->
+	</style>
 </head>
 
 <body>
@@ -120,10 +51,20 @@
 				</div>
 			</div>
 
-			<div class="button"> 
-				<button type="submit" class="btn btn-primary">Submit</button>
-			</div>
+			<span > 
+				<button type="submit" class="button">Submit</button>
+			</span>
+
 	</form>
+
+	<div>
+		<a class="button"th:href="@{/login}">Login Page</a>
+	 </div>
+
+	 
+	<div>
+		<a class="button"th:href="@{/home}">Main Page</a>
+	 </div>
 	</div>
 
 </body>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Homepage</title>
+
+    <link rel="stylesheet" th:href="@{/css/navbar.css}" />
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+  </head>
+  <body>
+    <header class="navbar">
+      <a th:href="@{/main}" id="home" class="material-symbols-outlined">
+        home
+      </a>
+
+      <span class="role" sec:authorize="hasAnyAuthority('USER')">
+        <p class="role-name">(User)</p>
+      </span>
+
+      <span class="role" sec:authorize="hasAnyAuthority('MOD')">
+        <p class="role-name">(Moderator)</p>
+      </span>
+
+      <span class="role" sec:authorize="hasAnyAuthority('AUTH')">
+        <p class="role-name">(Authority)</p>
+      </span>
+
+      <span class="role" sec:authorize="hasAnyAuthority('ADMIN')">
+        <p class="role-name">(Admin)</p>
+      </span>
+
+      <span class="name-container">
+        <p class="name" sec:authentication="principal.FullName"></p>
+      </span>
+
+      <div class="account">
+        <button
+          onclick="menu()"
+          id="account"
+          class="material-symbols-outlined account button-clear"
+        >
+          account_circle
+        </button>
+
+        <div id="dropmenu" style="display: none">
+          <button class="button-clear menuitem">
+            <a th:href="@{/user/{id}(id=${user.id})}">Profile</a>
+          </button>
+          <button class="button-clear menuitem">
+            <a th:href="@{/role}">Request Role</a>
+          </button>
+          <button class="button-clear menuitem" sec:authorize="hasAnyAuthority('ADMIN')">
+            <a id="checkrolebutton" th:href="@{/requests}">Check Requests</a>
+          </button>
+          <button class="button-clear menuitem">
+            <a th:href="@{/logout}">logout</a>
+          </button>
+        </div>
+      </div>
+
+      <!-- <form th:action="@{/logout}" method="post">
+        <input id="logout" class="button button-clear material-symbols-outlined" type="submit" value="logout"></input>
+      </form> -->
+    </header>
+    <script th:src="@{/scripts/dropdown.js}"></script>
+  </body>
+</html>
